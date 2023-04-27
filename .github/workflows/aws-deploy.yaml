@@ -20,7 +20,7 @@ jobs:
       - name: Make Python virtual environment
         run: python3 -m venv .venv
       - name: Activate Python virtual environment
-        run: source .venv/bin/activate.sh
+        run: source .venv/bin/activate
       - name: Install CDK requirements
         run: pip install -r requirements.txt
       - name: Diff stack
