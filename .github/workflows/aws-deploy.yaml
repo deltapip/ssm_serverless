@@ -5,9 +5,6 @@ on:
     paths:
       - 'lambda/*'
       - 'ssm_serverless/*'
-    paths-ignore:
-      - 'lambda/timestamp'
-      - 'ssm_serverless/timestamp'
   workflow_dispatch:
     branches:
       - main
