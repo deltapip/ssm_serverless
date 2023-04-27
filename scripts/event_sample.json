@@ -1,0 +1,124 @@
+{
+    "version": "0",
+    "id": "df6f8d22-4f4e-925f-975b-9f172d7ea5ca",
+    "detail-type": "AWS API Call via CloudTrail",
+    "source": "aws.lambda",
+    "account": "628168693344",
+    "time": "2023-04-26T19:50:39Z",
+    "region": "us-east-1",
+    "resources": [],
+    "detail": {
+        "eventVersion": "1.08",
+        "userIdentity": {
+            "type": "AssumedRole",
+            "principalId": "AROAZEQOFSZQCCPUIOCRY:AWSCloudFormation",
+            "arn": "arn:aws:sts::628168693344:assumed-role/cdk-hnb659fds-cfn-exec-role-628168693344-us-east-1/AWSCloudFormation",
+            "accountId": "628168693344",
+            "accessKeyId": "ASIAZEQOFSZQOQBJBJK6",
+            "sessionContext": {
+                "sessionIssuer": {
+                    "type": "Role",
+                    "principalId": "AROAZEQOFSZQCCPUIOCRY",
+                    "arn": "arn:aws:iam::628168693344:role/cdk-hnb659fds-cfn-exec-role-628168693344-us-east-1",
+                    "accountId": "628168693344",
+                    "userName": "cdk-hnb659fds-cfn-exec-role-628168693344-us-east-1"
+                },
+                "webIdFederationData": {},
+                "attributes": {
+                    "creationDate": "2023-04-26T19:50:38Z",
+                    "mfaAuthenticated": "false"
+                }
+            },
+            "invokedBy": "cloudformation.amazonaws.com"
+        },
+        "eventTime": "2023-04-26T19:50:39Z",
+        "eventSource": "lambda.amazonaws.com",
+        "eventName": "UpdateFunctionConfiguration20150331v2",
+        "awsRegion": "us-east-1",
+        "sourceIPAddress": "cloudformation.amazonaws.com",
+        "userAgent": "cloudformation.amazonaws.com",
+        "requestParameters": {
+            "functionName": "ssm_wrap",
+            "role": "arn:aws:iam::628168693344:role/ssm-serverless-ssmwrapServiceRole89D3869D-108WGI4ZO0NNS",
+            "handler": "wrap.handler",
+            "description": "Wrap Resource Handler 1682538560.198848\n",
+            "timeout": 300,
+            "memorySize": 1024,
+            "vpcConfig": {
+                "subnetIds": [],
+                "securityGroupIds": [],
+                "ipv6AllowedForDualStack": "False"
+            },
+            "environment": {},
+            "runtime": "python3.10",
+            "deadLetterConfig": {
+                "targetArn": ""
+            },
+            "kMSKeyArn": "",
+            "tracingConfig": {
+                "mode": "PassThrough"
+            },
+            "fileSystemConfigs": [],
+            "snapStart": {
+                "applyOn": "None"
+            }
+        },
+        "responseElements": {
+            "functionName": "ssm_wrap",
+            "functionArn": "arn:aws:lambda:us-east-1:628168693344:function:ssm_wrap",
+            "runtime": "python3.10",
+            "role": "arn:aws:iam::628168693344:role/ssm-serverless-ssmwrapServiceRole89D3869D-108WGI4ZO0NNS",
+            "handler": "wrap.handler",
+            "codeSize": 2110,
+            "description": "Wrap Resource Handler 1682538560.198848\n",
+            "timeout": 300,
+            "memorySize": 1024,
+            "lastModified": "2023-04-26T19:50:39.000+0000",
+            "codeSha256": "N96YCvS7uPrgUqoSa5xLBi8Qw4pGJ9UI7tbRUcdUA9Y=",
+            "version": "$LATEST",
+            "vpcConfig": {
+                "subnetIds": [],
+                "securityGroupIds": [],
+                "vpcId": "",
+                "ipv6AllowedForDualStack": "False"
+            },
+            "environment": {},
+            "tracingConfig": {
+                "mode": "PassThrough"
+            },
+            "revisionId": "d9748bc2-2896-4823-af8b-d0e3a5401605",
+            "layers": [
+                {
+                    "arn": "arn:aws:lambda:us-east-1:628168693344:layer:pycrypto1CB8806E:4",
+                    "codeSize": 2893905,
+                    "uncompressedCodeSize": 7477697
+                }
+            ],
+            "state": "Active",
+            "lastUpdateStatus": "InProgress",
+            "lastUpdateStatusReason": "The function is being created.",
+            "lastUpdateStatusReasonCode": "Creating",
+            "packageType": "Zip",
+            "architectures": [
+                "x86_64"
+            ],
+            "ephemeralStorage": {
+                "size": 512
+            },
+            "snapStart": {
+                "applyOn": "None",
+                "optimizationStatus": "Off"
+            },
+            "runtimeVersionConfig": {
+                "runtimeVersionArn": "arn:aws:lambda:us-east-1::runtime:7764dc7f3ff1fc45718f596be4cd03d7bca223f0586f3bfa5fe6584d6af81cd8"
+            }
+        },
+        "requestID": "7ed3ef47-189e-4b4d-8113-043125c5f8e3",
+        "eventID": "c307cc78-021f-40aa-bf72-e0d444b62f02",
+        "readOnly": "False",
+        "eventType": "AwsApiCall",
+        "managementEvent": "True",
+        "recipientAccountId": "628168693344",
+        "eventCategory": "Management"
+    }
+}
