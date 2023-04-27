@@ -36,4 +36,4 @@ jobs:
       - name: Test Application
         run: |
           test_host=$(echo steps.deploy_stack.outputs.stdout | grep "ssm-serverless.ssmendpoint" | cut -d= -f2)
-          ./test/test_ssm.sh $test_host
+          ./tests/test_ssm.sh $test_host
