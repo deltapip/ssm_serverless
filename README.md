@@ -1,65 +1,14 @@
 
-# Welcome to your CDK Python project!
+# Welcome to Serverless SSM Project!
 
-You should explore the contents of this project. It demonstrates a CDK app with an instance of a stack (`ssm_serverless_stack`)
-which contains an Amazon SQS queue that is subscribed to an Amazon SNS topic.
+The Serverless Software Security Module (SSM) project is a sample application that aims to demonstrate one way the GitOps model can be implemented using the AWS serverless stack. The application will use API Gateway, Lambda, Secret Manager, and Event Bridge. Resources provisioned under these services work together to provide a simple microservice that implements a symmetric encryption/decryption API. 
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+This project is inspired by the way gitops is implemented in Kubernetes via [ArgoCD](https://argo-cd.readthedocs.io/en/stable/). There are two main gitops principles at work with ArgoCD. First, every commit to a git repository containing K8 resources will result in a deployment of resources modified to a target Kubernetes cluster. Second, every change to K8 resources in the target cluster triggers a re-deployment of those resources in git repository. These principles guarantee the git repository is the sources of truth.
 
-This project is set up like a standard Python project.  The initialization process also creates
-a virtualenv within this project, stored under the .venv directory.  To create the virtualenv
-it assumes that there is a `python3` executable in your path with access to the `venv` package.
-If for any reason the automatic creation of the virtualenv fails, you can create the virtualenv
-manually once the init process completes.
+With the AWS Serverless stack there is no such thing as K8 resources but rather we are working with serverless cloud resources. If we apply the same gitops principles in this context, the following constraints apply: 
+* Every commit that changes the code or the configuration of cloud resources results in an automated deployment of the application to target AWS account and region.
+* Every change to application code or cloud resources configuration not coming from a git repo deployment flow results in the re-deployment of the application.
 
-To manually create a virtualenv on MacOS and Linux:
-
-```
-$ python3 -m venv .venv
-```
-
-After the init process completes and the virtualenv is created, you can use the following
-step to activate your virtualenv.
-
-```
-$ source .venv/bin/activate
-```
-
-If you are a Windows platform, you would activate the virtualenv like this:
-
-```
-% .venv\Scripts\activate.bat
-```
-
-Once the virtualenv is activated, you can install the required dependencies.
-
-```
-$ pip install -r requirements.txt
-```
-
-At this point you can now synthesize the CloudFormation template for this code.
-
-```
-$ cdk synth
-```
-
-You can now begin exploring the source code, contained in the hello directory.
-There is also a very trivial test included that can be run like this:
-
-```
-$ pytest
-```
-
-To add additional dependencies, for example other CDK libraries, just add to
-your requirements.txt file and rerun the `pip install -r requirements.txt`
-command.
-
-## Useful commands
-
- * `cdk ls`          list all stacks in the app
- * `cdk synth`       emits the synthesized CloudFormation template
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk docs`        open CDK documentation
+[CDK](https://aws.amazon.com/cdk/) is used to deploy the application. A github workflow will detect new commits and trigger the cdk deploy. One of the resources deployed in the application is an EventBridge rule that will trigger if the application code or application configuration changes outside the CDK deploy flow. The trigger will execute a lambda function that will invoke the same cdk deploy flow to make sure resource in github are synchronized with those running in AWS account.
 
 Enjoy!
