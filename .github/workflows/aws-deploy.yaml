@@ -32,9 +32,9 @@ jobs:
         run: cdk diff
       - name: Deploy stack
         id: deploy_stak
-        run: cdk deploy --all --require-approval never
+        run: cdk deploy --all --require-approval never -O cdk.out/stack_out.json
       - name: Test Application
         run: |
-          test_host=$(echo ${{ steps.deploy_stack.outputs.stdout }} | grep "ssm-serverless.ssmendpoint" | cut -d= -f2)
+          test_host=$(cat cdk.out/stack_out.json | jq -r '."ssm-serverless" | to_entries | map(select(.key | match("ssmendpoint"))) | .[].value')
           echo Testing against endpoint $test_host
           ./tests/test_ssm.sh $test_host
