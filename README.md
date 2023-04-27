@@ -30,7 +30,7 @@ cdk synth
 cdk deploy
 ```
 
-Once you do the first deploy calling `cdk diff` will tell you what is different between your stack and the one deploy on the aws account.
+Once you do the first deploy calling `cdk diff` will tell you what is different between your stack and the one deployed on the target aws account.
 
 
 Enjoy!
