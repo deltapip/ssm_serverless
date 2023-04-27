@@ -1,4 +1,14 @@
-on: [push, workflow_dispatch]
+on: 
+  push:
+    paths:
+      - 'lambda/*'
+      - 'ssm_serverless/*'
+    paths-ignore:
+      - 'lambda/timestamp'
+      - 'ssm_serverless/timestamp'
+    
+    
+    [push, workflow_dispatch]
 
 jobs:
   aws_cdk:
