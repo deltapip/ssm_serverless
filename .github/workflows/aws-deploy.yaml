@@ -16,8 +16,14 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
           aws-region: 'us-west-2'
       - name: Install dependencies
-        run: yarn
+        run: npm install -g aws-cdk
+      - name: Make Python virtual environment
+        run: python3 -m venv .venv
+      - name: Activate Python virtual environment
+        run: source .venv/bin/activate.sh
+      - name: Install CDK requirements
+        run: pip install -r requirements.txt
       - name: Diff stack
-        run: yarn cdk diff
+        run: cdk diff
       - name: Deploy stack
-        run: yarn cdk deploy --all --require-approval never
+        run: cdk deploy --all --require-approval never
