@@ -10,6 +10,7 @@ def handler(event, context):
     body = {}
     body["version"] = SSM_VERSION
     body["location"] = SSM_LOCATION
+    body["algorithm"] = "aes"
     body["path"] = event['path']
     return {
         'statusCode': 200,
