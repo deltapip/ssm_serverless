@@ -6,7 +6,7 @@ SSM_VERSION = os.environ['SSM_VERSION']
 SSM_LOCATION = os.environ['SSM_LOCATION']
 
 def handler(event, context):
-    # Some Random Comment
+    # Extract Information about SSM
     body = {}
     body["version"] = SSM_VERSION
     body["location"] = SSM_LOCATION
