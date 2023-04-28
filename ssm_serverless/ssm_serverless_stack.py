@@ -127,7 +127,10 @@ class SsmServerlessStack(Stack):
         unwrap_r = ssm_agw.root.add_resource("unwrap")
         unwrap_r.add_method("POST", apigw.LambdaIntegration(unwrap_lambda))
 
-        environment = {"SECRET_NAME": "github_secret", "SECRET_KEY": "github_token"}
+        environment = {"SECRET_NAME": "github_secret",
+                       "SECRET_KEY": "github_token",
+                       "ENDPOINT_KEY": "github_endpoint",
+                       "USER_KEY": "github_user"}
 
         integrity_lambda = _lambda.Function(
             self, 'ssm-integrity',
