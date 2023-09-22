@@ -41,7 +41,7 @@ class SsmServerlessStack(Stack):
         )
 
         ssm_secret = secretsmanager.Secret(self, "ssm-secret",
-            secret_name="ssm_secret",
+            secret_name="ssm_secret_051123",
             generate_secret_string=secret_generator
         )
 
@@ -59,7 +59,7 @@ class SsmServerlessStack(Stack):
             compatible_architectures=[_lambda.Architecture.X86_64]
         )
 
-        environment = {"SSM_VERSION": "0.0.1", "SSM_LOCATION": "usa"}
+        environment = {"SSM_VERSION": "0.0.1", "SSM_LOCATION": "ca"}
         timestamp = _read_time_stamp()
 
         version_lambda = _lambda.Function(
@@ -76,7 +76,7 @@ class SsmServerlessStack(Stack):
             description=f"Version Resource Handler {timestamp}"
         )
 
-        environment = {"SECRET_NAME": "ssm_secret", "SECRET_KEY": "aes_key"}
+        environment = {"SECRET_NAME": "ssm_secret_051123", "SECRET_KEY": "aes_key"}
 
         wrap_lambda = _lambda.Function(
             self, 'ssm-wrap',
