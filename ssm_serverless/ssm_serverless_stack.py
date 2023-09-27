@@ -59,7 +59,7 @@ class SsmServerlessStack(Stack):
             compatible_architectures=[_lambda.Architecture.X86_64]
         )
 
-        environment = {"SSM_VERSION": "0.0.1", "SSM_LOCATION": "ca"}
+        environment = {"SSM_VERSION": "0.0.1", "SSM_LOCATION": "uk"}
         timestamp = _read_time_stamp()
 
         version_lambda = _lambda.Function(
